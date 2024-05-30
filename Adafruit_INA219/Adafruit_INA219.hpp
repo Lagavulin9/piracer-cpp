@@ -39,8 +39,8 @@ private:
 	float	currentLSB = 0.1; // 100uA per bit
 	float	powerLSB = 0.002; // 2mW per bit
 
-	void writeRegister(int reg, int value);
-	int readRegister(int reg);
+	void	writeRegister(int reg, int value);
+	int		readRegister(int reg);
 };
 
 #endif

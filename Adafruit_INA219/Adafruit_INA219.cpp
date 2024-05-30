@@ -1,6 +1,6 @@
 #include "Adafruit_INA219.hpp"
 
-INA219::INA219(int i2c_bus, int addr = INA219_DEFAULT_ADDRESS):
+INA219::INA219(int i2c_bus, int addr):
 	i2c_bus(i2c_bus), addr(addr)
 {
 	handle = i2cOpen(i2c_bus, addr, 0);
@@ -14,7 +14,8 @@ INA219::INA219(int i2c_bus, int addr = INA219_DEFAULT_ADDRESS):
 
 INA219::~INA219()
 {
-	i2cClose(handle);
+	if (gpioInitialise() >= 0)
+		i2cClose(handle);
 }
 
 void INA219::setCalibration32V2A()
@@ -62,7 +63,7 @@ void INA219::writeRegister(int reg, int value)
 	i2cWriteWordData(handle, reg, (value >> 8) | ((value & 0xFF) << 8));
 }
 
-void INA219::readRegister(int reg)
+int INA219::readRegister(int reg)
 {
 	int result = i2cReadWordData(handle, reg);
 	return (result >> 8) | ((result & 0xFF) << 8);
