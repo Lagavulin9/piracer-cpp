@@ -23,6 +23,7 @@ private:
 	PCA9685	_throttleController;
 	INA219	_batteryMonitor;
 
+	void	_warmUP();
 	float	_get50HzDutyCycleFromPercent(float value);
 public:
 	PiRacer();

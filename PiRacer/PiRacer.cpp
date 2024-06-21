@@ -8,9 +8,17 @@ PiRacer::PiRacer():
 {
 	_steeringController.setPWMFreq(PWM_FREQ_50HZ);
 	_throttleController.setPWMFreq(PWM_FREQ_50HZ);
+	_warmUP();
 }
 
-PiRacer::~PiRacer(){};
+PiRacer::~PiRacer(){}
+
+void _warmUP()
+{
+	setSteeringPercent(0.0);
+	setThrottlePercent(0.0);
+	sleep(1);
+}
 
 float PiRacer::_get50HzDutyCycleFromPercent(float value)
 {
