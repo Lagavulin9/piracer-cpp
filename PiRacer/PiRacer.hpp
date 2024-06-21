@@ -19,9 +19,9 @@ private:
 	int		PWM_THROTTLE_CHANNEL_RIGHT_MOTOR_IN_2 = 2;
 	int		PWM_THROTTLE_CHANNEL_RIGHT_MOTOR_IN_PWM = 0;
 
-	PCA9685	_steeringController(PCA9685(1, 0x40));
-	PCA9685	_throttleController(PCA9685(1, 0x60));
-	INA219	_batteryMonitor(INA219(1, 0x41));
+	PCA9685	_steeringController;
+	PCA9685	_throttleController;
+	INA219	_batteryMonitor;
 
 	float	_get50HzDutyCycleFromPercent(float value);
 public:
@@ -31,8 +31,8 @@ public:
 	float		getBatteryVoltage();
 	float		getBatteryCurrent();
 	float		getPowerConsumption();
-	void		setSteeringPercent();
-	void		setThrottlePercent();
+	void		setSteeringPercent(float percent);
+	void		setThrottlePercent(float percent);
 }
 
 #endif

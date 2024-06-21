@@ -2,6 +2,9 @@
 #include "PiRacer.hpp"
 
 PiRacer::PiRacer():
+	_steeringController(PCA9685(1, 0x40)),
+	_throttleController(PCA9685(1, 0x60)),
+	_batteryMonitor(INA219(1, 0x41))
 {
 	_steeringController.setPWMFreq(PWM_FREQ_50HZ);
 	_throttleController.setPWMFreq(PWM_FREQ_50HZ);
@@ -29,14 +32,14 @@ float PiRacer::getPowerConsumption()
 	return _batteryMonitor.getPower();
 }
 
-float PiRacer::setSteeringPercent(float percent)
+void PiRacer::setSteeringPercent(float percent)
 {
 	float dutyCycle = _get50HzDutyCycleFromPercent(-percent);
 	int rawValue = static_cast<int>(PWM_MAX_RAW_VALUE * (dutyCycle / PWM_WAVELENGTH_50HZ));
 	_steeringController.setPWM(PWM_STEERING_CHANNEL, 0, rawValue);
 }
 
-float PiRacer::setThrottlePercent(float percent)
+void PiRacer::setThrottlePercent(float percent)
 {
 	if (percent > 0)
 	{
