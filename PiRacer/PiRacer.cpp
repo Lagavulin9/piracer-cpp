@@ -13,7 +13,7 @@ PiRacer::PiRacer():
 
 PiRacer::~PiRacer(){}
 
-void _warmUP()
+void PiRacer::_warmUP()
 {
 	setSteeringPercent(0.0);
 	setThrottlePercent(0.0);

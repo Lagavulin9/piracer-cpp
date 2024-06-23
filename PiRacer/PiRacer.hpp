@@ -34,6 +34,6 @@ public:
 	float		getPowerConsumption();
 	void		setSteeringPercent(float percent);
 	void		setThrottlePercent(float percent);
-}
+};
 
 #endif
