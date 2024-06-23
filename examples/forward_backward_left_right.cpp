@@ -2,6 +2,13 @@
 
 int main()
 {
+	// Ensure GPIO is initialized
+	if (gpioInitialise() < 0)
+	{
+		std::cerr << "pigpio initialization failed" << std::endl;
+		return 1;
+	}
+
 	// Create PiRacer Instance
 	PiRacer racer;
 
@@ -33,5 +40,6 @@ int main()
 	// Steering Neutral
 	racer.setSteeringPercent(0.0);
 
+	gpioTerminate();
 	return 0;
 }
