@@ -64,7 +64,7 @@ void PiRacer::setThrottlePercent(float percent)
 		_throttleController.setPWM(PWM_THROTTLE_CHANNEL_RIGHT_MOTOR_IN_2, 0, 0);
 	}
 
-	int pwmRawValue = PWM_MAX_RAW_VALUE * abs(percent);
+	int pwmRawValue = PWM_MAX_RAW_VALUE * std::abs(percent);
 	_throttleController.setPWM(PWM_THROTTLE_CHANNEL_LEFT_MOTOR_IN_PWM, 0, pwmRawValue);
 	_throttleController.setPWM(PWM_THROTTLE_CHANNEL_RIGHT_MOTOR_IN_PWM, 0, pwmRawValue);
 }
