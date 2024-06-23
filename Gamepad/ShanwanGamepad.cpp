@@ -1,4 +1,8 @@
-#include "ShawnGamePad.hpp"
+#include "ShanwanGamepad.hpp"
+
+ShanWanGamepad::ShanWanGamepad(): Joystick("/dev/input/js0", false){};
+
+ShanWanGamepad::ShanWanGamepad(const std::string& dev_fn = "/dev/input/js0"): Joystick("/dev/input/js0", false){};
 
 ShanWanGamepad::ShanWanGamepad(const std::string& dev_fn = "/dev/input/js0", bool non_block = false):
 	Joystick(dev_fn, non_block)

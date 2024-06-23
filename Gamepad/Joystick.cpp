@@ -5,7 +5,7 @@ Joystick::Joystick(const std::string& dev_fn = "/dev/input/js0", bool non_block 
 	jsdev(-1),
 	epoll_fd(-1),
 	num_axes(0),
-	num_buttons(0)
+	num_buttons(0),
 	non_block(non_block)
 {
 	// Initialize the axis and button names maps with standard values

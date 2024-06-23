@@ -1,6 +1,6 @@
 #pragma once
-#ifndef __SHAWNGAMEPAD__HPP__
-# define __SHAWNGAMEPAD__HPP__
+#ifndef __SHANWANGAMEPAD__HPP__
+# define __SHANWANGAMEPAD__HPP__
 
 #include "Joystick.hpp"
 
@@ -19,7 +19,6 @@ public:
 	bool button_x, button_a, button_b, button_y;
 	bool button_l1, button_l2, button_l3, button_r1, button_r2, button_r3;
 	bool button_select, button_start, button_home;
-	bool non_block;
 
 	ShanWanGamepadInput()
 		: button_up(false), button_down(false), button_left(false), button_right(false),
@@ -33,6 +32,8 @@ class ShanWanGamepad : public Joystick {
 public:
 	ShanWanGamepadInput gamepad_input;
 
+	ShanWanGamepad();
+	ShanWanGamepad(const std::string& dev_fn);
 	ShanWanGamepad(const std::string& dev_fn, bool non_block);
 	ShanWanGamepadInput read_data();
 };
