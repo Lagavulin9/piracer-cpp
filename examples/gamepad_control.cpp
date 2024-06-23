@@ -9,7 +9,7 @@ int main()
 		std::cerr << "pigpio initialization failed" << std::endl;
 		return 1;
 	}
-	atexit(gpioTerminate());
+	atexit(gpioTerminate);
 
 	// Create instances
 	PiRacer racer;
