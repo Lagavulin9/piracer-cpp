@@ -1,7 +1,7 @@
 #include "../PiRacer/PiRacer.hpp"
 #include <iostream>
 
-void print_energy_report(const PiRacer& racer)
+void print_energy_report(PiRacer& racer)
 {
 	float voltage = racer.getBatteryVoltage();
 	float current = racer.getBatteryCurrent();
@@ -37,12 +37,12 @@ int main()
 	std::cout << "Powertrain at 100%" << std::endl;
 	racer.setThrottlePercent(1.0);
 	sleep(3);
-	print_energy_report();
+	print_energy_report(racer);
 
-	std::cout << "Powertrain off"
+	std::cout << "Powertrain off" << std::endl;
 	racer.setThrottlePercent(0.0);
 	sleep(3);
-	print_energy_report();
+	print_energy_report(racer);
 
 	gpioTerminate();
 	return 0;
